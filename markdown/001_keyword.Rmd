@@ -1,0 +1,56 @@
+---
+title: "Mengambil Tweet Berdasarkan Keyword"
+author: "Muhammad Apriandito"
+output: html_document
+---
+
+```{r}
+# Install library
+install.packages("rtweet")
+```
+
+```{r}
+# Load library
+library(rtweet)
+```
+
+```{r}
+# Set Token
+token <- create_token(
+  app = "webinar4",
+  consumer_key = "SceoyLCqmokWtg0TK6QlkuBG9",
+  consumer_secret = "280cxcUl3RAzi1UMkcJSTbAGsqzZY7F2IPPohOKTRHYo21enPK",
+  access_token = "984196360864870400-rRWeGxEsL1xhdNO53ELAYVTj0XZtMgD",
+  access_secret = "XwKAtLcrJNAMqAA4FwHXfcR0ZmBMy7E0wZefDdXlzXjMl"
+)
+```
+
+```{r}
+# Tentukan Kata Kunci, Jumlah Tweet, dan Bahasa
+keyword <- "Gojek"
+jumlahtweet <- 100
+bahasa <- "id"
+retweet <- TRUE
+```
+
+```{r}
+# Proses Pengumpulan Data Tweet 
+tweet_keyword <- search_tweets(keyword,
+  n = jumlahtweet,
+  include_rts = retweet,
+  type = "recent",
+  lang = bahasa,
+  retryonratelimit = FALSE
+)
+```
+
+```{r}
+# Simpan data tweet dengan format .csv
+write_as_csv(crawling_keyword,
+  "data/tweet-keyword.csv",
+  prepend_ids = TRUE,
+  na = "",
+  fileEncoding = "UTF-8"
+)
+```
+

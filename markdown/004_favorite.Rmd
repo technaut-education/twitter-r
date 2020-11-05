@@ -1,0 +1,47 @@
+---
+title: "Mengambil Data Tweet yang Difavoritkan suatu Akun"
+author: "Muhammad Apriandito"
+output: html_document
+---
+
+```{r}
+# Install library
+install.packages("rtweet")
+```
+
+```{r}
+# Load library
+library(rtweet)
+```
+
+```{r}
+# Set Token
+token <- create_token(
+  consumer_key = "XIjOsMfdVdRTVinmuHYCteIMH",
+  consumer_secret = "EJTA5VDwjNLPgkoUpDj1DVb7lxHeEa4KFt2J79RGmijDoPHuqd",
+  access_token = "984196360864870400-EjeUGXKfHjK6M0Zyy2NRCi5oA2x0EsY",
+  access_secret = "Txdk4sysP8bpkv8Q8H6aSQNuSvW4df9YmWAhAD5AAD0WG",
+  set_renv = TRUE
+)
+```
+
+```{r}
+# 
+akun <- "jokowi" # Tanpa menggunkana @
+jumlahtweet <- 100
+```
+
+```{r}
+# Collecting Tweet
+favorite <- get_favorites(akun, n = jumlahtweet)
+```
+
+```{r}
+write_as_csv(favorite,
+  "data/favorite.csv",
+  prepend_ids = TRUE,
+  na = "",
+  fileEncoding = "UTF-8"
+)
+```
+
