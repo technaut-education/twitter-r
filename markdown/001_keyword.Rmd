@@ -5,7 +5,7 @@ output: html_document
 ---
 
 ```{r}
-# Install library
+# Install library (Cukup Sekali Saja)
 install.packages("rtweet")
 ```
 
@@ -17,11 +17,11 @@ library(rtweet)
 ```{r}
 # Set Token
 token <- create_token(
-  app = "webinar4",
-  consumer_key = "SceoyLCqmokWtg0TK6QlkuBG9",
-  consumer_secret = "280cxcUl3RAzi1UMkcJSTbAGsqzZY7F2IPPohOKTRHYo21enPK",
-  access_token = "984196360864870400-rRWeGxEsL1xhdNO53ELAYVTj0XZtMgD",
-  access_secret = "XwKAtLcrJNAMqAA4FwHXfcR0ZmBMy7E0wZefDdXlzXjMl"
+  app = "----",
+  consumer_key = "---",
+  consumer_secret = "---",
+  access_token = "---",
+  access_secret = "---"
 )
 ```
 
@@ -46,7 +46,7 @@ tweet_keyword <- search_tweets(keyword,
 
 ```{r}
 # Simpan data tweet dengan format .csv
-write_as_csv(crawling_keyword,
+write_as_csv(tweet_keyword,
   "data/tweet-keyword.csv",
   prepend_ids = TRUE,
   na = "",
